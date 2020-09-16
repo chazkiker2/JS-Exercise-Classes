@@ -1,5 +1,5 @@
 /*
-  EXAMPLE TASK:
+  * EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
     - All airplanes built with Airplane should initialize with an `isFlying` property of false.
     - Give airplanes the ability to `.takeOff()` and `.land()`:
@@ -22,13 +22,15 @@ class Airplane {
 }
 
 /*
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
 */
 
 /*
-  TASK 1
+  * TASK 1
+  TODO: THIS METHOD IS NOT FINISHED
+  ! UNFINISHED
     - Write a Person class whose constructor initializes `name` and `age` from arguments.
     - All instances of Person should also initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
@@ -45,7 +47,9 @@ class Person {
 }
 
 /*
-  TASK 2
+  * TASK 2
+  TODO: THIS METHOD IS NOT FINISHED
+  ! UNFINISHED
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
     - All instances built with Car:
         + should initialize with a `tank` at 0
@@ -63,7 +67,9 @@ class Car {
 }
 
 /*
-  TASK 3
+  * TASK 3
+  TODO: THIS METHOD IS NOT FINISHED 
+  ! UNFINISHED
     - Write a Lambdasian class.
     - Its constructor takes a single argument - an object with the following keys:
         + name
@@ -79,7 +85,9 @@ class Lambdasian {
 }
 
 /*
-  TASK 4
+  * TASK 4
+  TODO: THIS METHOD IS NOT FINISHED
+  ! UNFINISHED
     - Write an Instructor class extending Lambdasian.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -97,7 +105,10 @@ class Instructor {
 }
 
 /*
-  TASK 5
+  * TASK 5
+  ! UNFINISHED
+  TODO: THIS METHOD IS NOT FINISHED
+  >> UNTESTED
     - Write a Student class extending Lambdasian.
     - Its constructor takes a single argument -  an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -116,7 +127,10 @@ class Student {
 }
 
 /*
-  TASK 6
+  * TASK 6
+  ! UNFINISHED
+  TODO: THIS METHOD IS NOT FINISHED
+  >> UNTESTED
     - Write a ProjectManager class extending Instructor.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Instructor.
@@ -133,7 +147,10 @@ class ProjectManager {
 }
 
 /*
-  STRETCH PROBLEM (no tests!)
+  * STRETCH PROBLEM (no tests!)
+  ! UNFINISHED
+  TODO: THIS METHOD IS NOT FINISHED
+  >> NO TESTS AVAILABLE
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
     - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
     - Add a graduate method to a student.
