@@ -67,8 +67,8 @@ class Person {
 
 /*
   * TASK 2
-  TODO: THIS METHOD IS NOT FINISHED
-  ! UNFINISHED
+  * FINISHED
+  >> Passes all tests
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
     - All instances built with Car:
         + should initialize with a `tank` at 0
@@ -97,7 +97,6 @@ class Car {
       this.tank -= fuelUsed;
       this.odometer += distance;
     } else {
-      //// const distanceDriven = 
       this.odometer += this.milesPerGallon * this.tank;
       this.tank = 0;
       return `I ran out of fuel at ${this.odometer} miles!`;
@@ -107,8 +106,8 @@ class Car {
 
 /*
   * TASK 3
-  TODO: THIS METHOD IS NOT FINISHED 
-  ! UNFINISHED
+  * FINISHED
+  >> Passes all tests
     - Write a Lambdasian class.
     - Its constructor takes a single argument - an object with the following keys:
         + name
@@ -120,7 +119,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attrs) {
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
