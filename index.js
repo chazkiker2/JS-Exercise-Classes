@@ -166,17 +166,12 @@ class Instructor extends Lambdasian{
     const change = Math.random() * (max - 1) + 1; //Random number that must be less than 100-currentGrade and must be greater than 1
     const roundChange = Math.round(100*change)/100; //round score to hundredth
     let addOrSub = Math.floor(Math.random() * 2); // 0 for subtract, 1 for add
-    // console.log(`Student Grade Before: ${student.grade}`);
-    // console.log(`Score to Add: ${roundChange}`);
-    // console.log(`1 for Add, 0 for Sub: ${addOrSub}`);
     if (addOrSub) {
       student.grade += roundChange;
     } else {
       student.grade -= roundChange;
     }
-    // console.log(`Student Grade After: ${student.grade}`);
     return student.grade;
-
   }
 }
 
