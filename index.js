@@ -29,8 +29,9 @@ class Airplane {
 
 /*
   * TASK 1
-  TODO: THIS METHOD IS NOT FINISHED
-  ! UNFINISHED
+  
+  * FINISHED
+  >> Passes all test
     - Write a Person class whose constructor initializes `name` and `age` from arguments.
     - All instances of Person should also initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
@@ -43,7 +44,25 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood) {
+    if (this.stomach.length < 10) {
+      this.stomach.push(someFood);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
@@ -63,7 +82,27 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank += gallons;
+  }
+  drive(distance) {
+    const fuelUsed = distance / this.milesPerGallon;
+    if (this.tank >= fuelUsed) {
+      this.tank -= fuelUsed;
+      this.odometer += distance;
+    } else {
+      //// const distanceDriven = 
+      this.odometer += this.milesPerGallon * this.tank;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
