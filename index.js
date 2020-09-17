@@ -199,9 +199,8 @@ class Student extends Lambdasian {
 
 /*
   * TASK 6
-  ! UNFINISHED
-  TODO: THIS METHOD IS NOT FINISHED
-  >> UNTESTED
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write a ProjectManager class extending Instructor.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Instructor.
@@ -213,8 +212,18 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(attrs) {
+    super(attrs);
+    this.gradClassName = attrs.gradClassName;
+    this.favInstructor = attrs.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
