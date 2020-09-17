@@ -131,9 +131,8 @@ class Lambdasian {
 
 /*
   * TASK 4
-  TODO: THIS METHOD IS NOT FINISHED
-  ! UNFINISHED
-  >> UNTESTED
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write an Instructor class extending Lambdasian.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -165,9 +164,8 @@ class Instructor extends Lambdasian{
 
 /*
   * TASK 5
-  ! UNFINISHED
-  TODO: THIS METHOD IS NOT FINISHED
-  >> UNTESTED
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write a Student class extending Lambdasian.
     - Its constructor takes a single argument -  an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -181,8 +179,22 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian {
+  constructor(attrs) {
+    super(attrs);
+    this.previousBackground = attrs.previousBackground;
+    this.className = attrs.className;
+    this.favSubjects = attrs.favSubjects;
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects.join(", ")}!`;
+  }
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
 }
 
 /*
