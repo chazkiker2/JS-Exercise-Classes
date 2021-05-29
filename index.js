@@ -1,5 +1,5 @@
 /*
-  EXAMPLE TASK:
+  * EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
     - All airplanes built with Airplane should initialize with an `isFlying` property of false.
     - Give airplanes the ability to `.takeOff()` and `.land()`:
@@ -22,13 +22,16 @@ class Airplane {
 }
 
 /*
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
-// 👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
+//*  👇 COMPLETE YOUR WORK BELOW 👇
 */
 
 /*
-  TASK 1
+  * TASK 1
+  
+  * FINISHED
+  >> Passes all test
     - Write a Person class whose constructor initializes `name` and `age` from arguments.
     - All instances of Person should also initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
@@ -41,11 +44,31 @@ class Airplane {
 */
 
 class Person {
-
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood) {
+    if (this.stomach.length < 10) {
+      this.stomach.push(someFood);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
 }
 
 /*
-  TASK 2
+  * TASK 2
+  * FINISHED
+  >> Passes all tests
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
     - All instances built with Car:
         + should initialize with a `tank` at 0
@@ -59,11 +82,32 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank += gallons;
+  }
+  drive(distance) {
+    const fuelUsed = distance / this.milesPerGallon;
+    if (this.tank >= fuelUsed) {
+      this.tank -= fuelUsed;
+      this.odometer += distance;
+    } else {
+      this.odometer += this.milesPerGallon * this.tank;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
-  TASK 3
+  * TASK 3
+  * FINISHED
+  >> Passes all tests
     - Write a Lambdasian class.
     - Its constructor takes a single argument - an object with the following keys:
         + name
@@ -75,11 +119,20 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attrs) {
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
-  TASK 4
+  * TASK 4
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write an Instructor class extending Lambdasian.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -89,15 +142,45 @@ class Lambdasian {
     - The constructor calls the parent constructor passing it what it needs.
     - The constructor should also initialize `specialty`, `favLanguage` and `catchPhrase` properties on the instance.
     - Instructor instances have the following methods:
-        + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
-        + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
+        + `demo` receives a `subject` string as an argument and returns the phrase 
+          'Today we are learning about {subject}' where subject is the param passed in.
+        + `grade` receives a `student` object and a `subject` string as arguments and returns 
+          '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(attrs) {
+    super(attrs);
+    this.specialty = attrs.specialty;
+    this.favLanguage = attrs.favLanguage;
+    this.catchPhrase = attrs.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+  gradeAssignment(student) {
+    let currentGrade = student.grade;
+    const max = 100 - currentGrade;
+    const change = Math.random() * (max - 1) + 1; //Random number that must be less than 100-currentGrade and must be greater than 1
+    const roundChange = Math.round(100*change)/100; //round score to hundredth
+    let addOrSub = Math.floor(Math.random() * 2); // 0 for subtract, 1 for add
+    if (addOrSub) {
+      student.grade += roundChange;
+    } else {
+      student.grade -= roundChange;
+    }
+    return student.grade;
+  }
 }
 
+
+
 /*
-  TASK 5
+  * TASK 5
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write a Student class extending Lambdasian.
     - Its constructor takes a single argument -  an object with the following keys:
         + All the keys used to initialize instances of Lambdasian.
@@ -111,12 +194,36 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian {
+  constructor(attrs) {
+    super(attrs);
+    this.previousBackground = attrs.previousBackground;
+    this.className = attrs.className;
+    this.favSubjects = attrs.favSubjects;
+    this.grade = attrs.grade;
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects.join(", ")}!`;
+  }
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate() {
+    if (this.grade >= 70) {
+      return `${this.name} has officially graduated from Lambda with the following grade: ${this.grade}`;
+    } else {
+      return `${this.name} may not graduate with a grade lower than 70. Current grade: ${this.grade}`;
+    }
+  }
 }
 
 /*
-  TASK 6
+  * TASK 6
+  * FINISHED
+  >> PASSES ALL TESTS
     - Write a ProjectManager class extending Instructor.
     - Its constructor takes a single argument - an object with the following keys:
         + All the keys used to initialize instances of Instructor.
@@ -128,18 +235,36 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(attrs) {
+    super(attrs);
+    this.gradClassName = attrs.gradClassName;
+    this.favInstructor = attrs.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
 
 /*
-  STRETCH PROBLEM (no tests!)
+  * STRETCH PROBLEM (no tests!)
+  * FINISHED
+  >> NO TESTS AVAILABLE
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
-    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
+
+    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's)
+    that will randomly add or subtract points to a student's grade. _Math.random_ will help.
+
     - Add a graduate method to a student.
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
-      + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+      + If the student's grade is above a 70% let them graduate! 
+        Otherwise go back to grading their assignments to increase their score.
 */
+
+
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
